@@ -77,13 +77,13 @@ export function descendants(ht: PersonTable, id: number): Array<number> | undefi
     function helper(current: Array<number>, children: Array<number>): Array<number> {
         const new_arr: Array<number> = [];
         for(let i = 0; i < children.length; i = i + 1){
-            const new_children = ph_lookup(ht, children[i])?.children;
-            if(new_children !== undefined) {
-                for(let j = 0; j < new_children.length; j = j + 1){
-                    if(new_arr.includes(new_children[j]) || current.includes(new_children[j])){
+            const new_child = ph_lookup(ht, children[i])?.children;
+            if(new_child !== undefined) {
+                for(let j = 0; j < new_child.length; j = j + 1){
+                    if(new_arr.includes(new_child[j]) || current.includes(new_child[j])){
                         continue;
                     }
-                    new_arr.push(new_children[j]);
+                    new_arr.push(new_child[j]);
                 }
                 current.push(children[i]);
             } else {}
